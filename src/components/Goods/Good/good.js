@@ -24,14 +24,19 @@ const Good = ({ good, type }) => {
     if (good.quantity > good["quantityInOrder"]) {
       good["quantityInOrder"] += 1;
       dispatch(updateQuantity(good))
-      } else {
-          setDisableIncreasee(true);    
-      }
+    } else
+    {
+      setDisableIncreasee(true);    
+     }
   }
 
   const handelDecrease = () => {
+    if (good.quantity === good["quantityInOrder"]) {
+      setDisableIncreasee(false);    
+     }
     good["quantityInOrder"] = Math.max(good["quantityInOrder"] - 1, 1);
     dispatch(updateQuantity(good))
+     
   }
 
   const handleSubmit = (e) => {
