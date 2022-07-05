@@ -1,34 +1,15 @@
 import { makeStyles } from "@mui/styles";
 
-export default makeStyles((theme) => ({
-//   root: {
-//     '& .MuiTextField-root': {
-//       margin: theme.spacing(1),
-//     },
-//   },
-//   paper: {
-//     padding: theme.spacing(2),
-//   },
-  form: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-  },
-  fileInput: {
-    width: '97%',
-    margin: '10px 0',
-  },
-  buttonSubmit: {
-    marginBottom: 10,
-  },
-   conteiner: {
+export default makeStyles(() => ({
+    header: {
+        paddingBottom:'15px'
+    },
+    container: {
         borderRadius: 15,
-        margin: '30px 0',
-        display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-    },
+    }
 }));
 
 

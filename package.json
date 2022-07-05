@@ -9,6 +9,7 @@
     "@mui/material": "^5.8.6",
     "@mui/styles": "^5.8.6",
     "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-file-base64": "^1.0.3",
@@ -22,9 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
@@ -43,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }

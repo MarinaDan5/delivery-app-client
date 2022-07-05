@@ -1,52 +1,48 @@
-import React, { useEffect} from 'react';
-import './App.css';
-import { AppBar, Container, Grid, Typography, Grow, Box } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import {Route, Link, Routes } from 'react-router-dom';
+import React, { useEffect, useState} from 'react';
+import { AppBar, Container, Grid, Typography, Grow, Toolbar } from '@mui/material';
+import { useDispatch,useSelector } from 'react-redux';
+import { Route, Link, Routes } from 'react-router-dom';
+import useStyles from './styles';
 
-import { getGoods } from './actions/goods';
 import { getShops } from './actions/shops';
-
+import { setCurrentShop } from './actions/currentShop';
 import Goods from './components/Goods/goods';
 import Shops from './components/Shops/shops';
-import ShoppingCart from './components/ShoppingCart/shoppingCart';
-import useStyles from './styles';
-import { useSelector } from "react-redux";
-
-
-const App = () => {
-  const classes = useStyles()
-  const dispatch = useDispatch()
-
-   const shops = useSelector((state) => state.shops);
-
-    useEffect(() => { 
-      dispatch(getShops());
-    }, [dispatch])
+import ShoppingCart from './Pages/ShoppingCart/shoppingCart';
   
+const App = () => {
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const [active, setActive] = useState(false);
 
-  useEffect(() => { 
-    // const defaultShop = shops[0].market;
-    console.log('shops[0]', shops[0])
+  const shops = useSelector((state) => state.shops);
 
-    dispatch(getGoods('62c0534221f6056ea339aa71'));
-  }, [dispatch, shops])
+  useEffect(() => {
+    dispatch(getShops());
+  }, [dispatch]);
+  
+  useEffect(() => {
+    dispatch(setCurrentShop(shops[0]?.market))
+  }, [dispatch, shops]);
 
   return (
     <> 
-      <Container maxWidth="lg">
-        <AppBar className={classes.appBar} position='static' color='inherit'>
-          <Box>
-              <Link to={'/'} style={{ textDecoration: 'none' }}>
-               <Typography className={ classes.heading} variant='h5' align='center'>Shops</Typography>
-            </Link>
-          </Box>
-          <Box>
+    <Container fixed={ true} >
+      <AppBar className={classes.appBar} position='static' color='inherit'>
+        <Toolbar>        
+            <Link className={classes.link} to={'/'} style={{ textDecoration: 'none'}} color={active ? 'primary' : 'secondary'}  component='button' onClick={(() => { }) }>
+               <Typography underline="hover" className={ classes.heading} variant='h5' align='center'>Shops</Typography>
+              </Link>
             <Link to={'/shopping'} style={{ textDecoration: 'none' }}>
                <Typography className={classes.heading} variant='h5' align='center'>Shopping Cart</Typography>
             </Link>
-          </Box>
-        </AppBar>
+         </Toolbar>
+      </AppBar>
+    </Container>
+      
+      
+      <Container maxWidth="lg" >
+     
       
       <Routes>
         <Route path='/' element={  <Grow in>
