@@ -11,7 +11,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 Link to GitHub BackEnd [https://github.com/MarinaDan5/delivery-app]
 Link to GitHub FrontEnd [https://github.com/MarinaDan5/delivery-app-client]
 
-Link to Netlify [https://delivery-appllication.netlify.app/]
 
+Link to open [http://localhost:3000]
 
 
